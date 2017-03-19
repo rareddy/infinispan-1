@@ -16,9 +16,14 @@ import org.infinispan.query.remote.client.BaseProtoStreamMarshaller;
  */
 public class ProtoStreamMarshaller extends BaseProtoStreamMarshaller {
 
-   private final SerializationContext serializationContext = ProtobufUtil.newSerializationContext(Configuration.builder().build());
+   private final SerializationContext serializationContext;
 
    public ProtoStreamMarshaller() {
+      serializationContext = ProtobufUtil.newSerializationContext(Configuration.builder().build());
+   }
+
+   public ProtoStreamMarshaller(SerializationContext ctx) {
+      serializationContext = ctx;
    }
 
    @Override
